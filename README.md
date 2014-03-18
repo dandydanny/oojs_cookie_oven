@@ -1,9 +1,10 @@
-Jasmine-2.0.0-skeleton
-======================
-
-
+OOJS Cookie and Oven
+====================
+Fortified with Jasmine
 
 Made easy by https://github.com/tararoys. Thanks Tara.
+
+
 
 #Why this project?
 
