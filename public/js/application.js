@@ -24,15 +24,17 @@ $( document ).ready(function() {
 
   // takes input (name, time, button press)
 
-  $("#new_batch").on( "submit", function() {
+  $( "#new_batch" ).on( "submit", function() {
     event.preventDefault();
     console.log("Submitting form...")
   // do some shit
   });
 
-  $("#bake").on( "click", function() {
+  $( "#bake" ).on( "click", function() {
     console.log("Bake for 1 more minute")
   // do some shit
   });
+
+  $( "#message" ).append( "Welcome to The Fantastic Cookie Baking Machine" )
 
 });
