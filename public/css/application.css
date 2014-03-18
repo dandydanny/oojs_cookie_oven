@@ -1,0 +1,95 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+th {
+  text-align: left;
+}
+
+.footer {
+  margin: 20px auto;
+  width: 600px;
+  text-align: center;
+}
+
+.footer a {
+  text-decoration: none;
+  color: purple;
+}
+.footer a:hover {
+  color: orange;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4em;
+  font-weight: 100;
+}
+
+div {
+  display: block;
+  min-height: 30em;
+}
+
+/*
+available font weights:
+100,100italic,300,300italic,400,400italic,
+500,500italic,700,700italic,900,900italic
+*/
+
+/* Begin supplied CSS */
+
+body {
+    /*font-family: sans-serif;*/
+}
+.row {
+    margin-left: -20px;
+}
+.span6 {
+    padding-left: 10px;
+    margin-left: 10px;
+    max-width: 50%;
+    float: left;
+    height: 100%;
+}
+.span6:last-child {
+    border-left: 1px solid #ddd;
+}
+table#oven {
+    background-color: #bbb;
+    padding: 5px;
+    margin: 5px;
+}
+table#oven td {
+    padding: 8px;
+    border-bottom: 2px solid;
+}
+table#oven td.raw {
+    background-color: red;
+    color: white;
+}
+table#oven td.still_gooey {
+    background-color: yellow;
+    color: black;
+}
+table#oven td.just_right {
+    background-color: green;
+    color: white;
+}
+table#oven td.crispy {
+    background-color: black;
+    color: white;
+}
+table#oven span.status {
+    margin-left: 5px;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+/* End supplied CSS */

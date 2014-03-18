@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="public/css/normalize.css">
+  <link rel="stylesheet" href="public/css/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <!-- Mah face! -->
+  <link rel="icon" href="public/favicon128.png" sizes="128x128">
+  <script src="public/js/jquery-2.1.0.min.js"></script>
+  <link rel="stylesheet" href="public/jquery-ui-1.10.4/themes/smoothness/jquery-ui.css" />
+  <script src="public/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
+  <script src="public/js/application.js"></script>
+
+  <title>@DandyDanny's Awesome Cookie Baking Machine</title>
+</head>
+<body>
+<div class="container">
+  <!-- begin supplied HTML -->
+
+  <div class="row">
+    <div class="span6">
+      <h2>Prep Table</h2>
+
+      <ul id="prep_batches"></ul>
+      <form id="new_batch" name="new_batch">
+        <label>Cookie type:</label>
+        <input name="batch_type" type="text" placeholder="e.g. 'oatmeal raisin'" />
+        <br />
+        <label for="bake_time">Bake time:</label>
+        <input name="bake_time" type="number" min="0" max="20" />
+        <br />
+        <input type="submit" value="Make Batch" />
+      </form>
+    </div>
+    <div class="span6">
+      <h2>Oven</h2>
+
+      <table id="oven">
+        <tr>
+          <td id="rack_0">[empty]</td>
+        </tr>
+        <tr>
+          <td id="rack_1">[empty]</td>
+        </tr>
+        <tr>
+          <td id="rack_2">[empty]</td>
+        </tr>
+      </table>
+      <button id="bake">Bake for 1 minute</button>
+    </div>
+  </div>
+
+  <!-- end supplied HTML -->
+
+</div>
+  <div class="footer">
+    <p><a href="https://twitter.com/dandydanny">@DandyDanny</a> got his hands dirty with this one.</p>
+  </div>
+</body>
+</html>
