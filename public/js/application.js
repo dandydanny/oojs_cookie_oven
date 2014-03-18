@@ -1,16 +1,8 @@
-// $( document ).ready(function() {
+$( document ).ready(function() {
   // Your JavaScript here
   console.log("JS ready!");
 
-
-  //////// MODEL
-
-  // cookie prototype
-  // name
-  // req. bake time
-  // accumulated bake time
-  // fn to increment accumulated bake time
-
+  oven = new Oven();
 
   var Cookie = function(name, bakeTime){
     this.bakeTime = bakeTime;
@@ -37,19 +29,33 @@
   }
 
   function Oven() {
-    this.slots = 3;
+    this.racks = 3;
     this.contents = []
   }
 
   Oven.prototype.isFull = function(){
-    if(this.contents.length === this.slots){
-      // don't put it in oven
-    } else {
-      // put it in oven
-    };
+    return this.contents.length === this.racks
   };
 
-  Oven.prototype.bakeOneMin = function(){}
+  Cookie.prototype.putInOven = function(oven){
+    console.log("in function")
+    console.log(oven)
+    if(oven.isFull()){
+      console.log("fullll")
+      return "oven is full"
+    } else {
+      console.log("yay not full")
+      console.log(this);
+      oven.contents.push(this);
+      console.log(oven.contents)
+    }
+  }
+
+  Oven.prototype.bakeCookies = function(){
+    this.contents.forEach(function(cookie) {
+      cookie.bakeOneMin();
+    });
+  }
 
 
 
@@ -62,17 +68,25 @@
 
   // takes input (name, time, button press)
 
-  // $( "#new_batch" ).on( "submit", function() {
-  //   event.preventDefault();
-  //   console.log("Submitting form...")
-  // // do some shit
-  // });
+  $( "#new_batch" ).on( "submit", function() {
+    event.preventDefault();
+    console.log("Submitting form...")
+  // do some shit
+    var name = $("input[name='batch_type']").val();
+    var bakeTime = $("input[name='bake_time']").val();
+    console.log(name);
+    console.log(bakeTime);
+    cookie = new Cookie(name, bakeTime);
+    this.reset();
+    console.log(cookie);
+    cookie.putInOven(oven);
+  });
 
-  // $( "#bake" ).on( "click", function() {
-  //   console.log("Bake for 1 more minute")
-  // // do some shit
-  // });
+  $( "#bake" ).on( "click", function() {
+    console.log("Bake for 1 more minute")
+  // do some shit
+  });
 
-  // $( "#message" ).append( "Welcome to The Fantastic Cookie Baking Machine" )
+  $( "#message" ).append( "Welcome to The Fantastic Cookie Baking Machine" )
 
-// });
+});

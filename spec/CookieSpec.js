@@ -1,7 +1,7 @@
 describe("Cookie", function(){
   var cookie;
 
-  it("should always pass", function(){
+  it("should have this dummy test that always pass", function(){
     expect(5).toEqual(5);
   });
 
@@ -35,14 +35,56 @@ describe("Cookie", function(){
     expect(cookie.state).toEqual("still gooey");
   });
 
+  it("should be just right after baking for bake time", function(){
+    for(var i=0; i<10; i++){
+      console.log(cookie.name);
+      cookie.bakeOneMin();
+    };
+    console.log(cookie.timeBaked);
+    expect(cookie.state).toEqual("just right");
+  });
+
+
+
 });
 
 
 
+describe("Oven", function(){
+  var oven;
 
-// describe("Oven", function(){
+  beforeEach(function(){
+    oven = new Oven();
+  });
 
-// });
+  it("should have 3 racks", function(){
+    expect(oven.racks).toEqual(3);
+  });
+
+  it("should not accomodate more cookies if all 3 racks are full", function(){
+    oven.contents = ["foo", "bar", "foobar"];
+    cookie = new Cookie("chocolate chip", 10);
+    expect(cookie.putInOven(oven)).toEqual("oven is full");
+  });
+
+  it("should accept a cookie if all 3 racks are not full", function(){
+    cookie = new Cookie("chocolate chip", 10);
+    cookie.putInOven(oven);
+    console.log(oven.contents)
+    expect(oven.contents.length).toEqual(1);
+  });
+
+  it("should be able to bake cookies (invoke cookies' bakeOneMin fn)", function(){
+    cookie1 = new Cookie("foo", 10);
+    cookie2 = new Cookie("bar", 10);
+    cookie1.putInOven(oven);
+    cookie2.putInOven(oven);
+    oven.bakeCookies();
+    expect(cookie1.timeBaked).toEqual(1);
+    expect(cookie2.timeBaked).toEqual(1);
+  });
+
+});
 
 
 
