@@ -18,10 +18,10 @@ $( document ).ready(function() {
 
   Cookie.prototype.setStatus = function(){
     if(0 < this.timeBaked){
-      this.state = "still gooey";
+      this.state = "still_gooey";
     };
-    if(this.timeBaked === this.bakeTime){
-      this.state = "just right";
+    if(this.timeBaked == this.bakeTime){
+      this.state = "just_right";
     };
     if(this.timeBaked > this.bakeTime){
       this.state = "crispy";
@@ -41,7 +41,7 @@ $( document ).ready(function() {
     console.log("in function")
     console.log(oven)
     if(oven.isFull()){
-      console.log("fullll")
+      $("#status").text("No room for more cookies!  This oven is FULL.")
       return "oven is full"
     } else {
       console.log("yay not full")
@@ -52,9 +52,11 @@ $( document ).ready(function() {
   }
 
   Oven.prototype.bakeCookies = function(){
+    console.log("baking!");
     this.contents.forEach(function(cookie) {
       cookie.bakeOneMin();
     });
+    updateTable(this);
   }
 
 
@@ -68,10 +70,20 @@ $( document ).ready(function() {
 
   // takes input (name, time, button press)
 
+  function updateTable(oven){
+    console.log("updating DOM");
+    oven.contents.forEach(function(cookie, index) {
+      state = cookie.state;
+      $("#rack_" + index).addClass(state);
+      $("#rack_" + index).text(cookie.name);
+      console.log(state);
+      console.log(index);
+    })
+  }
+
+
   $( "#new_batch" ).on( "submit", function() {
     event.preventDefault();
-    console.log("Submitting form...")
-  // do some shit
     var name = $("input[name='batch_type']").val();
     var bakeTime = $("input[name='bake_time']").val();
     console.log(name);
@@ -80,11 +92,12 @@ $( document ).ready(function() {
     this.reset();
     console.log(cookie);
     cookie.putInOven(oven);
+    updateTable(oven);
   });
 
   $( "#bake" ).on( "click", function() {
     console.log("Bake for 1 more minute")
-  // do some shit
+    oven.bakeCookies();
   });
 
   $( "#message" ).append( "Welcome to The Fantastic Cookie Baking Machine" )
